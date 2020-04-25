@@ -35,7 +35,7 @@
                     displayName: '{{ Auth::user()->name }}'
                 },
                 jwt: '{{ create_jwt(Auth::user()) }}'
-                sa
+                
 			};
 			const api = new JitsiMeetExternalAPI(domain, options);
 			//api.executeCommand('displayName', 'New Nickname');
