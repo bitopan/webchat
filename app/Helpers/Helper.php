@@ -15,7 +15,7 @@ if(!function_exists('create_jwt')){
             "iss" => "geekuser",
             "aud" => "webchat",
             "sub" => "webchat.geekworkx.net",
-            "room" => "Geekworkx"
+            "room" => "*"
         );
 
         $jwt = JWT::encode($payload, $key);

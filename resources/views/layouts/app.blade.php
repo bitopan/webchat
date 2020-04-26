@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -21,27 +21,33 @@
     <script src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
 
     @if(auth()->user())
-    <script src='https://meet.geekworkx.net/external_api.js'></script>
+    <script src='https://webchat.geekworkx.net/external_api.js'></script>
     <script type="text/javascript">
-		$(document).ready(function(){
-			const domain = 'webchat.geekworkx.net';
-			const options = {
-			    roomName: 'Geekworkx',
-			    width: 900,
-			    height: 500,
-			    parentNode: document.querySelector('#meet'),
-                userInfo: {
-                    email: '{{ Auth::user()->email }}',
-                    displayName: '{{ Auth::user()->name }}'
-                },
-                jwt: '{{ create_jwt(Auth::user()) }}'
+		// $(document).ready(function(){
+		// 	const domain = 'webchat.geekworkx.net';
+		// 	const options = {
+		// 	    roomName: 'Geekworkx',
+		// 	    width: 900,
+		// 	    height: 500,
+		// 	    parentNode: document.querySelector('#meet'),
+        //         userInfo: {
+        //             email: '{{ Auth::user()->email }}',
+        //             displayName: '{{ Auth::user()->name }}'
+        //         },
+        //         jwt: '{{ create_jwt(Auth::user()) }}',
+        //         noSsl: true,
                 
-			};
-			const api = new JitsiMeetExternalAPI(domain, options);
-			//api.executeCommand('displayName', 'New Nickname');
-		});
+		// 	};
+		// 	const api = new JitsiMeetExternalAPI(domain, options);
+		// 	//api.executeCommand('displayName', 'New Nickname');
+		// });
     </script>
     @endif
+    <style>
+        a[href], input[type='submit'], input[type='image'], label[for], select, button, .pointer {
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
     <div id="app">

@@ -7,6 +7,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
 use Cache;
+use App\Room;
 
 class User extends Authenticatable
 {
@@ -41,5 +42,10 @@ class User extends Authenticatable
 
     public function isOnline(){
         return Cache::has('user-is-online-' . $this->id);
+    }
+
+    public function rooms()
+    {
+        return $this->belongsToMany(Room::class);
     }
 }

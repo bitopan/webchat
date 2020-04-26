@@ -29,3 +29,6 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/users-with-status', 'UserController@usersWithStatus');
+Route::get('/myrooms/{id}', 'RoomController@getRoomsByUser');
+Route::post('/create-room', 'RoomController@createRoom');
+Route::post('/join-room', 'RoomController@joinRoom');

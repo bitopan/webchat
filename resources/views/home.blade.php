@@ -31,16 +31,103 @@
                 <div id="meet"></div>
             </div>
             <div class="col-md-2">
-                <h2>Users List<h2>
-                <ul class="list-group" id="users-list">
+                <div>
+                    <div class="row">
+                        <div class="col-md-9 h5">My Rooms</div>
+                        <div class="col-md-3 h5 text-right">
+                            <a href="javascript:void(0)" onclick="createRoom()"><i class="fa fa-plus" alt="Create Room"></i></a>
+                        </div>
+                    </div>
                     
-                </ul>
+                    <ul class="list-group" id="rooms-list">
+                        
+                    </ul>
+                <div>
+                    
+                <div>
+                    <div class="h5">Join Meeting</div>
+                    <div>
+                        <form class="form-inline" action="/join-room" method="POST">
+                            {{ csrf_field() }}
+                            <div class="form-group mx-sm-3 mb-2" style="margin-left:0 !important">
+                                <label for="inputPassword2" class="sr-only">Room ID</label>
+                                <input type="text" class="form-control" id="name" name="name" placeholder="Room ID" style="max-width: 90px">
+                            </div>
+                            <button type="submit" class="btn btn-primary mb-2">Join</button>
+                        </form>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="h5">Users List<div class="h3">
+                    <ul class="list-group" id="users-list">
+                        
+                    </ul>
+                </div>
             </div>
         </div>
     {{-- </div> --}}
 </div>
 
 <script>
+
+    function createRoom() {
+        $.ajax({
+            type: "POST",
+            dataType: "json",
+            url: '/create-room',
+            headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+
+            success: function (data) {
+                let li= "";
+                //$.each(data, function(index, room){
+                    li += '<li class="list-group-item h6 pointer" onclick="addVideoSession(\''+data['name']+'\')">' + data['name'] + '</li>';
+                //});
+
+                $("#rooms-list").prepend(li);
+            }
+
+        });
+    }
+
+    function getUserRooms() {
+        $.ajax({
+            type: "GET",
+            dataType: "json",
+            url: '/myrooms/{{ Auth::user()->id }}',
+
+            success: function (data) {
+                let li= "";
+                $.each(data, function(index, room){
+                    li += '<li class="list-group-item h6 pointer" onclick="addVideoSession(\''+room['name']+'\')">' + room['name'] + '</li>';
+                });
+
+                $("#rooms-list").html(li);
+            }
+
+        });
+    }
+
+
+    function addVideoSession(roomName){
+        const domain = 'webchat.geekworkx.net';
+        const options = {
+            roomName: roomName,
+            width: 900,
+            height: 500,
+            parentNode: document.querySelector('#meet'),
+            userInfo: {
+                email: '{{ Auth::user()->email }}',
+                displayName: '{{ Auth::user()->name }}'
+            },
+            jwt: '{{ create_jwt(Auth::user()) }}',
+            noSsl: true,
+            
+        };
+        const api = new JitsiMeetExternalAPI(domain, options);
+    }
 
     function checkActiveUsers(){
         $.ajax({
@@ -60,14 +147,15 @@
                 }
                     
                 
-                li += '<li class="list-group-item h6" onclick="addVideoSession()">' + status + user['name'] + '</li>';
+                li += '<li class="list-group-item h6">' + status + user['name'] + '</li>';
             })
             
             $("#users-list").html(li);
         }, 
 
         complete: function (params) {
-            console.log("complete")
+            console.log("complete");
+            getUserRooms();
         }
     });
     };
