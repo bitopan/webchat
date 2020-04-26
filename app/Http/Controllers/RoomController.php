@@ -11,7 +11,7 @@ use Auth;
 class RoomController extends Controller
 {
     public function getRoomsByUser($id){
-        $user = User::findOrFail($id)->first();
+        $user = User::find($id);
         $rooms = $user->rooms;
 
         return response()->json($rooms);
