@@ -83,7 +83,7 @@
             success: function (data) {
                 let li= "";
                 //$.each(data, function(index, room){
-                    li += '<li class="list-group-item h6 pointer" onclick="addVideoSession(\''+data['name']+'\')">' + data['name'] + '</li>';
+                    li += '<li class="list-group-item h6 pointer" onclick="addVideoSession(\''+data['name']+'\')">' + data['name'].replace(/\B(?=(\d{3})+(?!\d))/g, " ") + '</li>';
                 //});
 
                 $("#rooms-list").prepend(li);
@@ -101,7 +101,7 @@
             success: function (data) {
                 let li= "";
                 $.each(data, function(index, room){
-                    li += '<li class="list-group-item h6 pointer" onclick="addVideoSession(\''+room['name']+'\')">' + room['name'] + '</li>';
+                    li += '<li class="list-group-item h6 pointer" onclick="addVideoSession(\''+room['name']+'\')">' + room['name'].replace(/\B(?=(\d{3})+(?!\d))/g, " "); + '</li>';
                 });
 
                 $("#rooms-list").html(li);
@@ -112,6 +112,7 @@
 
 
     function addVideoSession(roomName){
+        $('#meet').html('');
         const domain = 'webchat.geekworkx.net';
         const options = {
             roomName: roomName,
