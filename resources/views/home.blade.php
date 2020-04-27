@@ -128,6 +128,10 @@
             
         };
         const api = new JitsiMeetExternalAPI(domain, options);
+        api.executeCommand('subject', ' ');
+        api.on('readyToClose', () => {
+            api.dispose();
+        });
     }
 
     function checkActiveUsers(){
