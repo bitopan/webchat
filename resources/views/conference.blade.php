@@ -60,7 +60,7 @@
         setTimeout(() => {
             //alert();
             api.executeCommand('password', '{{ $data['password'] }}');
-        }, 5000);
+        }, 10000);
 
             // api.on('participantRoleChanged', () => {
 
