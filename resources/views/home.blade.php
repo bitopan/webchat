@@ -43,7 +43,7 @@
                         
                     </ul>
                 <div>
-                    
+                <hr class="hr-primary" />
                 <div>
                     <div class="h5">Join Meeting</div>
                     <div>
@@ -57,7 +57,7 @@
                         </form>
                     </div>
                 </div>
-
+                <hr class="hr-primary" />
                 <div>
                     <div class="h5">Users List<div class="h3">
                     <ul class="list-group" id="users-list">

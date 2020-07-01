@@ -17,7 +17,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::post('/doLogin', 'Auth\LoginController@doLogin')->name('doLogin');
+
 Auth::routes();
+
 
 Route::get('/home', 'HomeController@index')->name('home');
 
@@ -32,3 +35,11 @@ Route::get('/users-with-status', 'UserController@usersWithStatus');
 Route::get('/myrooms/{id}', 'RoomController@getRoomsByUser');
 Route::post('/create-room', 'RoomController@createRoom');
 Route::post('/join-room', 'RoomController@joinRoom');
+
+
+Route::get('/conference/{room}/{username}/{password}', 'ConferenceController@index');
+Route::get('/conference/create', 'ConferenceController@create');
+Route::post('/conference/', 'ConferenceController@store');
+
+
+

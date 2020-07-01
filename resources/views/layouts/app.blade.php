@@ -47,6 +47,9 @@
         a[href], input[type='submit'], input[type='image'], label[for], select, button, .pointer {
             cursor: pointer;
         }
+        .hr-primary{
+        background-image: -webkit-linear-gradient(left, rgba(66,133,244,.8), rgba(66, 133, 244,.6), rgba(0,0,0,0));
+        }
     </style>
 </head>
 <body>
