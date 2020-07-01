@@ -41,5 +41,5 @@ Route::get('/conference/{room}/{username}/{password}', 'ConferenceController@ind
 Route::get('/conference/create', 'ConferenceController@create');
 Route::post('/conference/', 'ConferenceController@store');
 
-
+Route::get('/conference/{token}', 'ConferenceController@indexWithToken');
 
