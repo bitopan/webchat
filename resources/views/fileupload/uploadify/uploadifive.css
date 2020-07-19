@@ -1,0 +1,44 @@
+/*
+UploadiFive
+Copyright (c) 2012 Reactive Apps, Ronnie Garcia
+*/
+
+.uploadifive-button {
+	background-color: rgba(3,11,49,0.8);
+	background-position: center top;
+	background-repeat: no-repeat;
+	color: #fff;
+	font-size:12px;
+	text-align: center;
+	text-shadow: 0 -1px 0 rgba(0,0,0,0.25);
+	width: 100%;
+	cursor:pointer;
+	/*border:2px solid #2a62bc;*/
+	#margin-top:5px;
+	cursor:pointer;
+}
+.uploadifive-button:hover {
+	#background-color: #606060;
+	background-position: center bottom;
+}
+.uploadifive-queue-item {
+	margin-top: 3px;
+}
+.uploadifive-queue-item .close {
+	display: block;
+	float: right;
+	height: 16px;
+	text-indent: -9999px;
+	width: 16px;
+}
+.uploadifive-queue-item .progress {
+	#border: 1px solid #D0D0D0;
+	height: 3px;
+	margin-top: 5px;
+	width: 100%;	
+}
+.uploadifive-queue-item .progress-bar {
+	background-color: #2a62bc;
+	height: 5px;
+	width: 0;
+}

@@ -38,8 +38,21 @@ Route::post('/join-room', 'RoomController@joinRoom');
 
 
 Route::get('/conference/{room}/{username}/{password}', 'ConferenceController@index');
-Route::get('/conference/create', 'ConferenceController@create');
-Route::post('/conference/', 'ConferenceController@store');
 
-Route::get('/conference/{token}', 'ConferenceController@indexWithToken');
 
+Route::get('/conference/{token}/{doctor}', 'ConferenceController@indexWithToken');
+
+//Route::post('/create-conference', 'ConferenceController@createConference');
+
+Route::get('/conference-create/{roompass}/{doctor}/{patient}', 'ConferenceController@create');
+Route::post('/conference-create/', 'ConferenceController@store');
+Route::get('/thankyou', 'ConferenceController@thankyou');
+
+
+Route::get('/create-meeting', 'MeetingController@create');
+Route::get('/join-meeting', 'MeetingController@join');
+Route::post('/meeting', 'MeetingController@meeting');
+Route::get('/invitation', 'MeetingController@invitation');
+Route::get('/meeting', function(){
+	return redirect('/join-meeting');
+});

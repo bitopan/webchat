@@ -1,0 +1,5 @@
+[01-Aug-2019 09:23:05 Etc/GMT] PHP Fatal error:  Cannot use try without catch or finally in /home/ladykeane/public_html/mail/email.php on line 73
+[05-Dec-2019 20:24:53 Etc/GMT] PHP Notice:  Undefined index: Email in /home/ladykeane/public_html/mail/email.php on line 30
+[05-Dec-2019 20:24:53 Etc/GMT] PHP Notice:  Undefined index: Name in /home/ladykeane/public_html/mail/email.php on line 30
+[05-Dec-2019 20:31:33 Etc/GMT] PHP Notice:  Undefined index: Email in /home/ladykeane/public_html/mail/email.php on line 44
+[05-Dec-2019 20:31:33 Etc/GMT] PHP Notice:  Undefined index: Name in /home/ladykeane/public_html/mail/email.php on line 44

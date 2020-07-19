@@ -1,0 +1,29 @@
+<script src="uploadify/jquery.uploadifive.js?<?=uniqid()?>" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="uploadify/uploadifive.css">
+<script type="text/javascript">
+
+			$(function() {
+				$('#upload_id').uploadifive({
+					'auto'         : true,
+					'formData'     : {'test' : 'something'},
+					'queueID'      : 'queue',
+					// 'queueSizeLimit': 2,
+					'simUploadLimit'  : 1,
+					'fileType'		: 'pdf',
+					'width'           : 170,
+					'buttonText'	: 'Upload Document',
+					'multi'           : false,
+					'uploadScript' : 'uploadifive.php',
+					'onUploadComplete' : function(file, data) {
+						// console.log(data);
+						var data1 = data.split("||");
+						if(data1[0].trim()=="Uploaded"){
+							$('#attachment').val(data1[1]);			//link save in hidden field
+						}
+					}
+				});
+			});
+
+
+
+</script>
